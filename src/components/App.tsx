@@ -1,16 +1,14 @@
-import { MyComponent } from "./MyComponent";
+import Episode from "./Episode";
 import "./style.css";
 import episodes from "../episodes.json";
 
 function App() {
-    console.log(`Imported ${episodes.length} episode(s)`);
-    console.log(`First episode's name is ${episodes[0].name}`);
-
+    const episodesOutput = episodes.map((eachEp, index) => (
+        < Episode key={index} episode={eachEp} />
+    ))
     return (
         <div className="App">
-            <MyComponent />
-
-            {"Hello World"}
+            {episodesOutput}
         </div>
     );
 }
