@@ -5,7 +5,7 @@ import App from "./App";
 describe("App component", async () => {
     test("Should have text Hello, World on it", () => {
         render(<App />);
-        const elem = screen.getByText("Hello, World");
+        const elem = screen.getByText("Hello World");
         expect(elem).toBeInTheDocument();
     });
 });
