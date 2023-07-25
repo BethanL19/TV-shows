@@ -1,3 +1,33 @@
 html {
-    background: #f8f8f8;
+    background: #24362e;
+}
+
+.App {
+    background-color: #24362e;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.episode {
+    background-color: #aaf0d1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 5px 1px 5px 1px #65756e;
+}
+
+p {
+    font-size: smaller;
+}
+
+.footer {
+    color: white;
+}
+a {
+    color: #aaf0d1;
 }
