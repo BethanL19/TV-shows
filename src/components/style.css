@@ -31,3 +31,14 @@ p {
 a {
     color: #aaf0d1;
 }
+.countOfEps {
+    color: #aaf0d1;
+    padding: 10px;
+    display: inline;
+}
+.searchBar {
+    color: #65756e;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
