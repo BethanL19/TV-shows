@@ -10,13 +10,13 @@ interface EpisodeInfo {
     airdate: string;
     airtime: string;
     airstamp: string;
-    rating: { average: number };
+    rating: { average: number | null };
     runtime: number;
     image: {
-        medium: string;
-        original: string;
-    };
-    summary: string;
+        medium: string | undefined;
+        original: string | undefined;
+    } | null;
+    summary: string | null;
     _links: { self: { href: string } };
 }
 
@@ -33,8 +33,12 @@ function Episode(props: EpisodeProps): JSX.Element {
                     {padNumber(props.episode.number)}
                 </span>
             </h3>
-            <img alt="medium" src={props.episode.image.medium} />
-            <p>{removeTags(props.episode.summary)}</p>
+            {props.episode.image !== null && (
+                <img alt="medium" src={props.episode.image.medium} />
+            )}
+            {props.episode.summary !== null && (
+                <p>{removeTags(props.episode.summary)}</p>
+            )}
         </div>
     );
 }

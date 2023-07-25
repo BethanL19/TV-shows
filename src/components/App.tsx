@@ -12,7 +12,10 @@ function App() {
         filteredData = episodes.filter(
             (ep) =>
                 ep.name.toLowerCase().includes(typedSearch.toLowerCase()) ||
-                ep.summary.toLowerCase().includes(typedSearch.toLowerCase())
+                (ep.summary !== null &&
+                    ep.summary
+                        .toLowerCase()
+                        .includes(typedSearch.toLowerCase()))
         );
     } else {
         filteredData = episodes;
