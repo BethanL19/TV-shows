@@ -1,6 +1,6 @@
 import { padNumber, removeTags } from "./episodeUtils";
 
-interface EpisodeInfo {
+export interface EpisodeInfo {
     id: number;
     url: string;
     name: string;
@@ -24,7 +24,7 @@ interface EpisodeProps {
     episode: EpisodeInfo;
 }
 
-function Episode(props: EpisodeProps): JSX.Element {
+export function Episode(props: EpisodeProps): JSX.Element {
     return (
         <div className="episode">
             <h3>
@@ -42,5 +42,3 @@ function Episode(props: EpisodeProps): JSX.Element {
         </div>
     );
 }
-
-export default Episode;
