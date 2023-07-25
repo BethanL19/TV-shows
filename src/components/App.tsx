@@ -2,6 +2,7 @@ import { Episode, EpisodeInfo } from "./Episode";
 import { search } from "./episodeUtils";
 import "./style.css";
 import { useEffect, useState } from "react";
+import shows from "../shows.json";
 
 let count = 0;
 
@@ -9,6 +10,8 @@ function App() {
     const [typedSearch, setTypedSearch] = useState("");
     const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
     const [episodes, setEpisodes] = useState<EpisodeInfo[]>([]);
+    const [show, setShow] = useState("");
+    const handleSelection = (selection: string) => setShow(selection);
 
     useEffect(() => {
         const getEpisodes = async () => {
@@ -35,8 +38,23 @@ function App() {
         return "Displaying " + displayedEps + " / " + totalEps + " episodes";
     };
 
+    const sortedShows = shows.sort((a, b) => a.name.localeCompare(b.name));
+    const showTitles = sortedShows.map((eachShow, index) => (
+        <option key={index}>{eachShow.name}</option>
+    ));
+
     return (
         <>
+            <select
+                name="shows"
+                id="shows-select"
+                onChange={(event) => {
+                    handleSelection(event.target.value);
+                }}
+            >
+                <option value="">-- Please select a show --</option>
+                {showTitles}
+            </select>
             <input
                 className="searchBar"
                 placeholder="Search..."
