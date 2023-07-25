@@ -1,3 +1,5 @@
+import { padNumber, removeTags } from "./episodeUtils";
+
 interface EpisodeInfo {
     id: number;
     url: string;
@@ -11,28 +13,30 @@ interface EpisodeInfo {
     rating: { average: number };
     runtime: number;
     image: {
-      medium: string;
-      original: string;
+        medium: string;
+        original: string;
     };
     summary: string;
     _links: { self: { href: string } };
-  }
+}
 
 interface EpisodeProps {
-    episode : EpisodeInfo
+    episode: EpisodeInfo;
 }
 
-
-function Episode(props:EpisodeProps): JSX.Element {
-    const padNumber = (num:number):string =>  num<10 ? "0"+num : num.toString()
-    const removeTags = (str:string):string => str.includes("<p>") && str.includes("</p>") ? str.substring(3,(str.length-4)) : str
+function Episode(props: EpisodeProps): JSX.Element {
     return (
-        <>
-            <h3><span>{props.episode.name} - S{padNumber(props.episode.season)}E{padNumber(props.episode.number)}</span></h3>
-            <img alt="medium" src = {props.episode.image.medium}/>
+        <div className="episode">
+            <h3>
+                <span>
+                    {props.episode.name} - S{padNumber(props.episode.season)}E
+                    {padNumber(props.episode.number)}
+                </span>
+            </h3>
+            <img alt="medium" src={props.episode.image.medium} />
             <p>{removeTags(props.episode.summary)}</p>
-        </>
-    )
+        </div>
+    );
 }
 
-export default Episode
+export default Episode;
