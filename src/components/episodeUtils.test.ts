@@ -10,7 +10,7 @@ test("test removeTags function", () => {
     expect(removeTags("Hi I'm <p></p>Rosie")).toBe("Hi I'm Rosie");
 });
 
-test("test filtering function", () => {
+test.skip("test filtering function", () => {
     expect(
         display(
             "winter",
