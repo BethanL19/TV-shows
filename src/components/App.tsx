@@ -1,14 +1,17 @@
 import { Episode, EpisodeInfo } from "./Episode";
-import { display } from "./episodeUtils";
+import {display, seasonEpStructure } from "./episodeUtils";
 import "./style.css";
 import { useEffect, useState } from "react";
-import shows from "../shows.json";
+import showsRaw from "../shows.json";
+import { ShowInfo } from "../showsInfo";
+
+const shows: ShowInfo[] = showsRaw
 
 function App() {
     const [typedSearch, setTypedSearch] = useState("");
     const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
     const [episodes, setEpisodes] = useState<EpisodeInfo[]>([]);
-    const [show, setShow] = useState<any>();
+    const [show, setShow] = useState<ShowInfo>();
     const [selectedEpisode, setSelectedEpisode] = useState<
         EpisodeInfo | undefined
     >();
@@ -20,12 +23,13 @@ function App() {
 
     const handleEpisodeSelection = (selection: string) => {
         const episodeSelectionObj = episodes.find(
-            (episode) => episode.name === selection
+            (episode) => `${seasonEpStructure(episode.season, episode.number)} - ${episode.name}` === selection
         );
         setSelectedEpisode(episodeSelectionObj);
     };
 
     useEffect(() => {
+        if (show){
         const getEpisodes = async () => {
             const response = await fetch(
                 `https://api.tvmaze.com/shows/${show.id}/episodes`
@@ -34,7 +38,7 @@ function App() {
             setEpisodes(jsonBody);
         };
         getEpisodes();
-    }, [show]);
+    }}, [show]);
 
     const filteredData = display(typedSearch, episodes, selectedEpisode);
 
@@ -53,11 +57,9 @@ function App() {
         <option key={index}>{eachShow.name}</option>
     ));
 
-    const sortedEpisodes = episodes.sort((a, b) =>
-        a.name.localeCompare(b.name)
-    );
-    const episodeTitles = sortedEpisodes.map((eachEpisode, index) => (
-        <option key={index}>{eachEpisode.name}</option>
+    
+    const episodeTitles = episodes.map((eachEpisode, index) => (
+        <option key={index}>{`${seasonEpStructure(eachEpisode.season, eachEpisode.number)} - ${eachEpisode.name}`}</option>
     ));
 
     return (
