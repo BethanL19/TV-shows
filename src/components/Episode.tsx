@@ -1,4 +1,4 @@
-import { padNumber, removeTags } from "./episodeUtils";
+import { removeTags, seasonEpStructure } from "./episodeUtils";
 
 export interface EpisodeInfo {
     id: number;
@@ -29,8 +29,11 @@ export function Episode(props: EpisodeProps): JSX.Element {
         <div className="episode">
             <h3>
                 <span>
-                    {props.episode.name} - S{padNumber(props.episode.season)}E
-                    {padNumber(props.episode.number)}
+                    {seasonEpStructure(
+                        props.episode.season,
+                        props.episode.number
+                    )}{" "}
+                    - {props.episode.name}
                 </span>
             </h3>
             {props.episode.image !== null && (
