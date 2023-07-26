@@ -14,7 +14,7 @@ export function display(
 ) {
     let filteredData;
     if (selection) {
-        filteredData = episodes.filter((ep) => ep.name === selection.name);
+        filteredData = episodes.filter((ep) => ep === selection);
     } else if (typedSearch.length > 0) {
         filteredData = episodes.filter(
             (ep) =>
