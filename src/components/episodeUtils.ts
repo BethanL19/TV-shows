@@ -30,6 +30,6 @@ export function display(
     return filteredData;
 }
 
-export function seasonEpStructure(season: number, episode: number) :string {
-    return `S${padNumber(season)}E${padNumber(episode)}`
+export function seasonEpStructure(season: number, episode: number): string {
+    return `S${padNumber(season)}E${padNumber(episode)}`;
 }
