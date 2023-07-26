@@ -1,20 +1,28 @@
 import { Episode, EpisodeInfo } from "./Episode";
-import { search } from "./episodeUtils";
+import { display } from "./episodeUtils";
 import "./style.css";
 import { useEffect, useState } from "react";
 import shows from "../shows.json";
-
-let count = 0;
 
 function App() {
     const [typedSearch, setTypedSearch] = useState("");
     const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
     const [episodes, setEpisodes] = useState<EpisodeInfo[]>([]);
     const [show, setShow] = useState<any>();
+    const [selectedEpisode, setSelectedEpisode] = useState<
+        EpisodeInfo | undefined
+    >();
 
-    const handleSelection = (selection: string) => {
+    const handleShowSelection = (selection: string) => {
         const showSelectionObj = shows.find((show) => show.name === selection);
         setShow(showSelectionObj);
+    };
+
+    const handleEpisodeSelection = (selection: string) => {
+        const episodeSelectionObj = episodes.find(
+            (episode) => episode.name === selection
+        );
+        setSelectedEpisode(episodeSelectionObj);
     };
 
     useEffect(() => {
@@ -23,14 +31,12 @@ function App() {
                 `https://api.tvmaze.com/shows/${show.id}/episodes`
             );
             const jsonBody: EpisodeInfo[] = await response.json();
-            console.log(count++);
-
             setEpisodes(jsonBody);
         };
         getEpisodes();
     }, [show]);
 
-    const filteredData = search(typedSearch, episodes);
+    const filteredData = display(typedSearch, episodes, selectedEpisode);
 
     const episodesOutput = filteredData.map((eachEp, index) => (
         <Episode key={index} episode={eachEp} />
@@ -47,17 +53,34 @@ function App() {
         <option key={index}>{eachShow.name}</option>
     ));
 
+    const sortedEpisodes = episodes.sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
+    const episodeTitles = sortedEpisodes.map((eachEpisode, index) => (
+        <option key={index}>{eachEpisode.name}</option>
+    ));
+
     return (
         <>
             <select
                 name="shows"
                 id="shows-select"
                 onChange={(event) => {
-                    handleSelection(event.target.value);
+                    handleShowSelection(event.target.value);
                 }}
             >
                 <option value="">-- Please select a show --</option>
                 {showTitles}
+            </select>
+            <select
+                name="episodes"
+                id="episodes-select"
+                onChange={(event) => {
+                    handleEpisodeSelection(event.target.value);
+                }}
+            >
+                <option value="">-- Please select an episode --</option>
+                {episodeTitles}
             </select>
             <input
                 className="searchBar"

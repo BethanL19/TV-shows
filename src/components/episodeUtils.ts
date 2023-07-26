@@ -7,9 +7,15 @@ export function removeTags(str: string): string {
     return str.replace(/<[^>]*>/g, "");
 }
 
-export function search(typedSearch: string, episodes: EpisodeInfo[]) {
+export function display(
+    typedSearch: string,
+    episodes: EpisodeInfo[],
+    selection: EpisodeInfo | undefined
+) {
     let filteredData;
-    if (typedSearch.length > 0) {
+    if (selection) {
+        filteredData = episodes.filter((ep) => ep.name === selection.name);
+    } else if (typedSearch.length > 0) {
         filteredData = episodes.filter(
             (ep) =>
                 ep.name.toLowerCase().includes(typedSearch.toLowerCase()) ||
