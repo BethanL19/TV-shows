@@ -10,13 +10,17 @@ function App() {
     const [typedSearch, setTypedSearch] = useState("");
     const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
     const [episodes, setEpisodes] = useState<EpisodeInfo[]>([]);
-    const [show, setShow] = useState("");
-    const handleSelection = (selection: string) => setShow(selection);
+    const [show, setShow] = useState<any>();
+
+    const handleSelection = (selection: string) => {
+        const showSelectionObj = shows.find((show) => show.name === selection);
+        setShow(showSelectionObj);
+    };
 
     useEffect(() => {
         const getEpisodes = async () => {
             const response = await fetch(
-                "https://api.tvmaze.com/shows/82/episodes"
+                `https://api.tvmaze.com/shows/${show.id}/episodes`
             );
             const jsonBody: EpisodeInfo[] = await response.json();
             console.log(count++);
@@ -24,7 +28,7 @@ function App() {
             setEpisodes(jsonBody);
         };
         getEpisodes();
-    }, []);
+    }, [show]);
 
     const filteredData = search(typedSearch, episodes);
 
