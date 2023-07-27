@@ -68,7 +68,7 @@ function EpisodePage(props: EpisodePageProps) {
                 Back to Shows
             </button>
             <select
-                name="episodes"
+                className="episodesDropdown"
                 id="episodes-select"
                 onChange={(event) => {
                     handleEpisodeSelection(event.target.value);

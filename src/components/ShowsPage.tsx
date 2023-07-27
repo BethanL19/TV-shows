@@ -57,7 +57,7 @@ export function ShowsPage(props: ShowsPageProps): JSX.Element {
             />
             <div className="countOfShows">{countOfShows()}</div>
             <select
-                name="showsDropdown"
+                className="showsDropdown"
                 id="shows-select"
                 onChange={(event) => {
                     handleShowSelection(event.target.value);

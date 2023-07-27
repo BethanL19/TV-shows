@@ -96,6 +96,8 @@ a {
     color: #aaf0d1;
     padding: 10px;
     display: inline;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 .searchBar {
     color: #65756e;
@@ -108,6 +110,8 @@ a {
     color: #24362e;
     padding: 10px;
     display: inline;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 .ShowTitle {
     background-color: #aaf0d1;
@@ -116,12 +120,30 @@ a {
     margin: 10px;
     margin-left: 550px;
     margin-right: 550px;
+    margin-top: 20px;
+    border-radius: 8px;
 }
 .backToShows {
-    margin: 5px;
-    padding: 5px;
+    color: #65756e;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
     border-radius: 8px;
 }
 .showsDropdown {
+    color: #65756e;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+.episodesDropdown {
+    color: #65756e;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
     border-radius: 8px;
 }
