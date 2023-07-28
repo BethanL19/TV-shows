@@ -17,13 +17,13 @@ interface ShowsPageProps {
 
 export function ShowsPage(props: ShowsPageProps): JSX.Element {
     const [typedSearch, setTypedSearch] = useState("");
-    const [show, setShow] = useState<ShowInfo>();
+    const [dropdownShow, setDropdownShow] = useState<ShowInfo>();
 
     const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
 
     const handleShowSelection = (selection: string) => {
         const showSelectionObj = shows.find((show) => show.name === selection);
-        setShow(showSelectionObj);
+        setDropdownShow(showSelectionObj);
     };
     const handleShowClicked = (show: ShowInfo) => {
         props.clickedShow(show);
@@ -31,7 +31,7 @@ export function ShowsPage(props: ShowsPageProps): JSX.Element {
     };
 
     const sortedShows = shows.sort((a, b) => a.name.localeCompare(b.name));
-    const filteredData = displayShow(typedSearch, sortedShows, show);
+    const filteredData = displayShow(typedSearch, sortedShows, dropdownShow);
 
     const countOfShows = () => {
         const displayedShows: number = filteredData.length;

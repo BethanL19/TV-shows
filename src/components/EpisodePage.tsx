@@ -10,12 +10,12 @@ interface EpisodePageProps {
 
 function EpisodePage(props: EpisodePageProps) {
     const [typedSearch, setTypedSearch] = useState("");
-    const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
     const [episodes, setEpisodes] = useState<EpisodeInfo[]>([]);
     const [selectedEpisode, setSelectedEpisode] = useState<
         EpisodeInfo | undefined
     >();
 
+    const handleSearch = (searchWord: string) => setTypedSearch(searchWord);
     const handleBackToShowsPage = () => {
         props.displayShowPage(true);
     };
