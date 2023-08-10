@@ -1,0 +1,149 @@
+html {
+    background: #24362e;
+}
+
+.EpisodePage {
+    background-color: #24362e;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.episode {
+    background-color: #aaf0d1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 5px 1px 5px 1px #65756e;
+}
+.ShowPage {
+    background-color: #aaf0d1;
+    border: #aaf0d1 solid 5px;
+}
+
+.ShowGrid {
+    background-color: #aaf0d1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.show {
+    background-color: #24362e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 5px 1px 5px 1px #65756e;
+    margin: 8px;
+    margin-left: 16px;
+    margin-right: 16px;
+    display: grid;
+    grid-template-areas:
+        "title title title"
+        "img summary details";
+    justify-content: center;
+    align-content: center;
+    gap: 5px;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.showTitle {
+    grid-area: title;
+    padding: 4px;
+    font-size: x-large;
+}
+.showImg {
+    grid-area: img;
+    padding: 4px;
+}
+.showSummary {
+    grid-area: summary;
+    padding: 80px;
+    font-size: large;
+}
+.showDetails {
+    grid-area: details;
+    padding: 4px;
+    border: #65756e solid 2px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+    font-size: medium;
+    list-style-type: none;
+}
+
+p {
+    font-size: smaller;
+}
+
+.footer {
+    color: white;
+}
+a {
+    color: #aaf0d1;
+}
+.countOfEps {
+    color: #aaf0d1;
+    padding: 10px;
+    display: inline;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.searchBar {
+    color: #65756e;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+.countOfShows {
+    color: #24362e;
+    padding: 10px;
+    display: inline;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.ShowTitle {
+    background-color: #aaf0d1;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    margin-left: 550px;
+    margin-right: 550px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+.backToShows {
+    color: #65756e;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+.showsDropdown {
+    color: #65756e;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+.episodesDropdown {
+    color: #65756e;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
